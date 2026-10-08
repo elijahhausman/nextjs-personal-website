@@ -44,7 +44,7 @@ export const blogs: BlogGroup[] = [
         id: "cloud-1",
         slug: "custom-domains-with-cloudflare",
 
-        name: "Setting Up Custom Domains with Cloudflare DNS",
+        name: "Setting Up Custom Domains with Cloudflare",
         icon: icons["cloudflare"],
 
         tags: ["cloudflare", "dns", "networking"],
