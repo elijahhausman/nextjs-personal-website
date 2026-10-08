@@ -20,7 +20,9 @@ export default function BlogsPage() {
           <AlertTitle>
             This app is in development! If you have any questions, please reach
             out to{" "}
-            <span className="font-bold underline">hello@elijahhausman.com</span>
+            <span className="break-all font-bold underline">
+              hello@elijahhausman.com
+            </span>
           </AlertTitle>
         </Alert>
 

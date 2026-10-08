@@ -1,4 +1,3 @@
-import { cn } from "cn";
 import { LucideChevronLeft, LucideInfo } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +6,7 @@ import { Alert } from "@/components/ui/alert";
 import { Seperator } from "@/components/ui/seperator";
 import { getBlogBySlug } from "@/features/blog/lib/blogs";
 import { blogsPath } from "@/lib/paths";
+import { cn } from "@/lib/utils";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   dateStyle: "long",

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { blogPath } from "@/lib/paths";
+import { cn } from "@/lib/utils";
 import type { BlogItem as BlogItemProps } from "../lib/types";
 
 function BlogItem({ name, icon, slug }: BlogItemProps) {
@@ -11,7 +12,7 @@ function BlogItem({ name, icon, slug }: BlogItemProps) {
           width={20}
           height={20}
           alt={icon.name}
-          className={`select-none ${icon.isRounded && "rounded-sm"}`}
+          className={cn("select-none", icon.isRounded && "rounded-sm")}
         />
 
         <span className="truncate font-medium underline decoration-transparent underline-offset-4 transition duration-125 group-hover:text-blue-300 group-hover:decoration-blue-300">
