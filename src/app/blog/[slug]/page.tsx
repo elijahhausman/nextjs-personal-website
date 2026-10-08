@@ -1,9 +1,11 @@
-import { LucideChevronLeft, LucideInfo } from "lucide-react";
+import { LucideChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Alert } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Seperator } from "@/components/ui/seperator";
+import { BlogContent } from "@/features/blog/components/blog-content";
 import { getBlogBySlug } from "@/features/blog/lib/blogs";
 import { blogsPath } from "@/lib/paths";
 import { cn } from "@/lib/utils";
@@ -79,139 +81,71 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_256px]">
           <article className="w-full max-w-2xl space-y-6 text-base text-foreground/90 leading-7">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-
-            <h2
-              id="why-this-matters"
-              className="pt-4 font-semibold text-2xl text-foreground tracking-tight"
-            >
-              Why this matters
-            </h2>
-
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.
-            </p>
-
-            <ul className="ml-6 list-disc space-y-2 marker:text-muted-foreground">
-              <li>Curabitur blandit tempus porttitor</li>
-              <li>Vestibulum id ligula porta felis euismod semper</li>
-              <li>Nullam quis risus eget urna mollis ornare</li>
-            </ul>
-
-            <h2
-              id="getting-started"
-              className="pt-4 font-semibold text-2xl text-foreground tracking-tight"
-            >
-              Getting started
-            </h2>
-
-            <p>
-              Maecenas faucibus mollis interdum. Run{" "}
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-                npm run dev
-              </code>{" "}
-              and open the page in your browser.
-            </p>
-
-            <pre className="overflow-x-auto rounded-lg border border-border bg-muted p-4 font-mono text-sm leading-6">
-              <code>{`npm install something-cool\nnpm run dev`}</code>
-            </pre>
-
-            <Alert variant="info">
-              <LucideInfo className="size-4" />
-              <span>
-                Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem
-                malesuada magna mollis euismod.
-              </span>
-            </Alert>
-
-            <h3
-              id="a-smaller-detail"
-              className="pt-2 font-semibold text-foreground text-xl"
-            >
-              A smaller detail
-            </h3>
-
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Donec id elit non mi porta gravida at eget metus.
-            </p>
-
-            <h2
-              id="wrapping-up"
-              className="pt-4 font-semibold text-2xl text-foreground tracking-tight"
-            >
-              Wrapping up
-            </h2>
-
-            <p>
-              Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
+            <BlogContent slug={slug} />
           </article>
 
           <div className="hidden space-y-8 lg:block">
             {blog.tags.length > 0 && (
               <ul className="flex flex-wrap gap-2">
                 {blog.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="rounded-full border border-zinc-700 bg-muted/50 px-2.5 py-0.5 font-medium text-muted-foreground text-xs"
-                  >
-                    #{tag}
+                  <li key={tag}>
+                    <Badge
+                      variant="secondary"
+                      className="bg-secondary/50 text-muted-foreground ring-1 ring-foreground/10"
+                    >
+                      #{tag}
+                    </Badge>
                   </li>
                 ))}
               </ul>
             )}
 
             <aside className="sticky top-6">
-              <nav className="rounded-lg border border-zinc-700 bg-muted/50 p-4">
-                <h4 className="mb-3 font-semibold text-foreground text-sm">
-                  Table of Contents
-                </h4>
+              <Card className="bg-secondary/50">
+                <CardHeader>
+                  <CardTitle>Table of contents</CardTitle>
+                </CardHeader>
 
-                <ul className="space-y-2 text-muted-foreground text-sm">
-                  <li>
-                    <a
-                      href="#why-this-matters"
-                      className="transition-colors hover:text-foreground"
-                    >
-                      Why this matters
-                    </a>
-                  </li>
+                <CardContent className="text-muted-foreground">
+                  <ul className="space-y-2">
+                    <li>
+                      <a
+                        href="#why-this-matters"
+                        className="transition-colors hover:text-foreground"
+                      >
+                        Why this matters
+                      </a>
+                    </li>
 
-                  <li>
-                    <a
-                      href="#getting-started"
-                      className="transition-colors hover:text-foreground"
-                    >
-                      Getting started
-                    </a>
-                  </li>
+                    <li>
+                      <a
+                        href="#getting-started"
+                        className="transition-colors hover:text-foreground"
+                      >
+                        Getting started
+                      </a>
+                    </li>
 
-                  <li>
-                    <a
-                      href="#a-smaller-detail"
-                      className="pl-3 transition-colors hover:text-foreground"
-                    >
-                      A smaller detail
-                    </a>
-                  </li>
+                    <li>
+                      <a
+                        href="#a-smaller-detail"
+                        className="pl-3 transition-colors hover:text-foreground"
+                      >
+                        A smaller detail
+                      </a>
+                    </li>
 
-                  <li>
-                    <a
-                      href="#wrapping-up"
-                      className="transition-colors hover:text-foreground"
-                    >
-                      Wrapping up
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+                    <li>
+                      <a
+                        href="#wrapping-up"
+                        className="transition-colors hover:text-foreground"
+                      >
+                        Wrapping up
+                      </a>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
             </aside>
           </div>
         </div>

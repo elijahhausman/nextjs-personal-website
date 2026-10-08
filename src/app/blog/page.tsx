@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function BlogsPage() {
   return (
     <div className="px-4 py-6 lg:px-32 lg:py-16">
-      <div className="mx-auto max-w-200 space-y-16 pb-24">
+      <div className="mx-auto max-w-200 animate-fade-from-top space-y-16 pb-24">
         {/* Development warning */}
         <Alert variant="warning">
           <LucideTriangleAlert />
